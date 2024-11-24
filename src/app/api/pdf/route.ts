@@ -1,34 +1,33 @@
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { NextRequest, NextResponse } from 'next/server';
+import puppeteer from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
     try {
         const { data }: { data: string } = await req.json();
 
-        // Create a new PDF document
-        const pdfDoc = await PDFDocument.create();
-
-        // Add a page to the document
-        const page = pdfDoc.addPage([595, 842]); // A4 size (595 x 842 points)
-
-        // Embed a standard font
-        const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-
-        // Set font size and draw text on the page
-        const fontSize = 12;
-        page.drawText(data, {
-            x: 50,
-            y: 800, // Start drawing at the top of the page
-            size: fontSize,
-            font,
-            color: rgb(0, 0, 0), // Black text
+        // Launch Puppeteer with a serverless-compatible Chromium binary
+        const browser = await puppeteer.launch({
+            executablePath: await chromium.executablePath(),
+            args: chromium.args,
+            headless: chromium.headless,
         });
 
-        // Serialize the document to bytes (Buffer)
-        const pdfBytes = await pdfDoc.save();
+        const page = await browser.newPage();
 
-        // Return the generated PDF as a response
-        return new NextResponse(Buffer.from(pdfBytes), {
+        // Set the HTML content
+        await page.setContent(data, { waitUntil: 'networkidle0' });
+
+        // Generate PDF
+        const pdfBuffer = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+        });
+
+        await browser.close();
+
+        // Return the PDF
+        return new NextResponse(pdfBuffer, {
             status: 200,
             headers: {
                 'Content-Type': 'application/pdf',
