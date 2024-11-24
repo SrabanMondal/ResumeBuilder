@@ -193,7 +193,7 @@ const handleClick = async ()=>{
       </Vortex>
       </header>
 
-      <Stack direction={{ base: "column", md: "row" }} spacing={4} p={2}>
+      <Stack direction={{ base: "column", md: "row" }} spacing={4} p={2} color={'#dcdcdc'}>
        
         <Box w={{ base: "100%", md: "40%" }} p={4} borderRight={{ md: "1px solid #e2e8f0" }}>
           <Accordion allowMultiple>

@@ -209,7 +209,7 @@ export default function ResumeBuilder() {
         <h1 className="text-2xl font-bold">Resume Builder</h1>
       </header>
 
-      <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+      <Stack direction={{ base: "column", md: "row" }} spacing={4} color={'#dcdcdc'}>
         <Box w={{ base: "100%", md: "40%" }} p={4} borderRight={{ md: "1px solid #e2e8f0" }}>
           <Accordion allowMultiple>
             <Style2 setStyles={setstyles} styles={styles}/>
