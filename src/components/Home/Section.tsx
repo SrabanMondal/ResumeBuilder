@@ -5,10 +5,15 @@ import resumeimg from "@/images/resume.png";
 import {  motion} from "framer-motion";
 import { useRef } from "react";
 import { FlipWords } from "../ui/flip-words";
+import { useRouter } from "next/navigation";
 //export const MotionBox = motion<BoxProps>(Box)
 export default function Section() {
   const btnanm = useRef<HTMLDivElement>(null)
+  const router = useRouter()
   const words = ['professional','creative','customized','outstanding','impressive']
+  const handleClick = () =>{
+    router.push('/resume')
+  }
   return (
     <Box
       as="section"
@@ -26,7 +31,7 @@ export default function Section() {
           Build <FlipWords words={words}/> resumes in minutes. Stand out from the crowd and land your dream job.
         </div>
         <VStack spacing={2} direction={{ base: "column", sm: "row" }}>
-          <Button overflow={'hidden'} size="lg" pos={'relative'} colorScheme="cyan" color="purple.600" onClick={()=>{console.log('hello')}} onMouseLeave={()=>{
+          <Button overflow={'hidden'} size="lg" pos={'relative'} colorScheme="cyan" color="purple.600" onClick={handleClick} onMouseLeave={()=>{
              if(btnanm.current){
               btnanm.current.style.left='-200px'
             }
@@ -35,7 +40,8 @@ export default function Section() {
                 btnanm.current.style.left='0px'
               }
           }}>
-            <Box  pointerEvents={'none'} ref={btnanm} pos={'absolute'} display={'flex'} justifyContent={'center'} alignItems={'center'} top={0} left={-200} w={'full'} h={'full'} bgColor={'blue.500'} zIndex={5} rounded={'md'} transition={'1s ease-in'}
+
+            <Box  ref={btnanm} pos={'absolute'} display={'flex'} justifyContent={'center'} alignItems={'center'} top={0} left={-200} w={'full'} h={'full'} bgColor={'blue.500'} zIndex={5} rounded={'md'} transition={'1s ease-in'}
             > <Text color={'white'}>Tap Here</Text></Box>
             Get Started
           </Button>
