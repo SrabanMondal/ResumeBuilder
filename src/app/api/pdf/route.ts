@@ -1,32 +1,34 @@
-import puppeteer from 'puppeteer';
-import path from 'path';
-import fs from 'fs';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
     try {
         const { data }: { data: string } = await req.json();
-        const htmlContent = `${data}`;
 
-        // Generate PDF
-        const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        // Create a new PDF document
+        const pdfDoc = await PDFDocument.create();
+
+        // Add a page to the document
+        const page = pdfDoc.addPage([595, 842]); // A4 size (595 x 842 points)
+
+        // Embed a standard font
+        const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+        // Set font size and draw text on the page
+        const fontSize = 12;
+        page.drawText(data, {
+            x: 50,
+            y: 800, // Start drawing at the top of the page
+            size: fontSize,
+            font,
+            color: rgb(0, 0, 0), // Black text
         });
-        const page = await browser.newPage();
-        await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
 
-        const pdfPath = path.join(process.cwd(), 'output.pdf');
-        await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
+        // Serialize the document to bytes (Buffer)
+        const pdfBytes = await pdfDoc.save();
 
-        await browser.close();
-
-        const pdfBuffer = fs.readFileSync(pdfPath);
-
-        fs.unlink(pdfPath, (err) => {
-            if (err) console.error('Error deleting the PDF file:', err);
-        });
-
-        return new NextResponse(pdfBuffer, {
+        // Return the generated PDF as a response
+        return new NextResponse(Buffer.from(pdfBytes), {
             status: 200,
             headers: {
                 'Content-Type': 'application/pdf',
@@ -45,4 +47,3 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 export async function GET() {
     return NextResponse.json({ success: false, message: 'Method Not Allowed' }, { status: 405 });
 }
-
