@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Header</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    a {
+      color: chocolate !important;
+    }
+    .resume {
+      background-color: whitesmoke !important;
+    }
+    .resume ul {
+      list-style-type: square;
+    }
+    p, span, ul {
+      color: blueviolet !important;
+    }
+    hr {
+      background-color: black !important;
+    }
+    h2 {
+      color: black !important;
+    }
+    h3 {
+      color: gray !important;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Resume section -->
+<div class="w-[794px] max-h-[1123px] mx-auto bg-slate-200 p-10 rounded-lg shadow-md resume">
+  
+  <!-- Header Section -->
+  <div class="text-center space-y-1">
+    <h1 class="text-3xl font-bold text-gray-800">ABIGAIL HALL</h1>
+    <p class="text-lg text-gray-600">Senior Business Analyst | Data Analytics Expert</p>
+
+    <!-- Contact Info -->
+    <div class="flex flex-wrap justify-center items-center gap-2 text-gray-500 text-sm">
+      <span>abi.hall@enhancv.com</span>
+      <span>&bull;</span>
+      <span>San Francisco, CA</span>
+      <span>&bull;</span>
+      <span>91+892837328</span>
+      <span>&bull;</span>
+      <a href="https://linkedin.com/in/abigail-hall" class="text-blue-600 hover:underline">LinkedIn</a>
+      <span>&bull;</span>
+      <a href="https://yourportfolio.com" target="_blank" class="text-blue-600 hover:underline">yourportfolio.com</a>
+      <span>&bull;</span>
+      <a href="https://github.com/yourusername" target="_blank" class="text-blue-600 hover:underline">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Two-Column Layout for the Sections -->
+  <div class="grid grid-cols-2 gap-6 mt-8">
+
+    <!-- Left Column -->
+    <div class="space-y-6">
+      
+      <!-- Summary -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Summary</h2>
+        <hr class="w-full h-1 bg-black my-2">
+        <p class="text-gray-700 leading-snug text-sm">
+          Seasoned IT business analyst with over 12 years in business analytics, specializing in data visualization and BI software. Expertise extends to Agile and Scrum methodologies, JIRA, SQL, ETL, and Master Data Management.
+        </p>
+      </section>
+
+      <!-- Education -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Education</h2>
+        <hr class="w-full h-1 bg-gray-300 mb-2">
+        <div class="mb-3">
+          <h3 class="text-md font-semibold text-gray-800">University of San Francisco</h3>
+          <p class="text-gray-600 text-sm">Master of Science in Information Systems</p>
+          <p class="text-gray-500 text-right text-sm">01/2006 - 01/2008</p>
+        </div>
+        <div class="mb-3">
+          <h3 class="text-md font-semibold text-gray-800">University of California, Berkeley</h3>
+          <p class="text-gray-600 text-sm">Bachelor of Science in Computer Science</p>
+          <p class="text-gray-500 text-right text-sm">01/2002 - 01/2006</p>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Skills</h2>
+        <hr class="w-full h-1 bg-gray-300 my-2">
+        <div class="flex flex-wrap gap-1 mt-3">
+          <span class="px-2 py-1 bg-gray-300 rounded-full text-gray-700 text-sm">Data Visualization</span>
+          <span class="px-2 py-1 bg-gray-200 rounded-full text-gray-700 text-sm">Agile and Scrum</span>
+          <span class="px-2 py-1 bg-gray-300 rounded-full text-gray-700 text-sm">JIRA</span>
+          <span class="px-2 py-1 bg-gray-200 rounded-full text-gray-700 text-sm">SQL</span>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Certifications</h2>
+        <hr class="w-full h-1 bg-gray-300 mb-2">
+        <p class="text-gray-700 text-sm">
+          <strong>Certified Scrum Master</strong> — Certification focusing on Agile project management methodologies.
+        </p>
+      </section>
+
+    </div>
+
+    <!-- Right Column -->
+    <div class="space-y-6">
+      
+      <!-- Experience -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Experience</h2>
+        <hr class="w-full h-1 bg-gray-300 my-2">
+        <div class="mb-4">
+          <h3 class="text-md font-semibold text-gray-800">Senior Business Analyst</h3>
+          <p class="text-gray-600 text-sm">Genentech</p>
+          <p class="text-gray-500 text-sm">01/2016 - Present</p>
+          <ul class="list-disc list-inside text-sm text-gray-700 mt-2">
+            <li>Led development of an analytics dashboard that improved decision-making speed by 25%.</li>
+            <li>Facilitated workshops to define project scopes and translate complex data into insights.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Key Achievements -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Key Achievements</h2>
+        <hr class="w-full h-1 bg-gray-300 my-2">
+        <div class="p-2 border border-gray-200 rounded-md">
+          <h3 class="text-md font-semibold text-gray-800">Streamlined reporting processes</h3>
+          <p class="text-gray-600 text-sm mt-1">Led a data management overhaul that reduced redundant reporting processes.</p>
+        </div>
+      </section>
+
+      <!-- Hobbies -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-800">Hobbies</h2>
+        <hr class="w-full h-1 bg-gray-300 my-2">
+        <div class="flex flex-wrap gap-3">
+          <span class="px-3 py-1 bg-gray-200 rounded-full text-gray-700 text-sm">Traveling</span>
+          <span class="px-3 py-1 bg-gray-200 rounded-full text-gray-700 text-sm">Photography</span>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
