@@ -6,7 +6,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     try {
         const { data }: { data: string } = await req.json();
 
-        // Launch Puppeteer with a serverless-compatible Chromium binary
+        // Launch Puppeteer with a serverless-compatible Chromium
         const browser = await puppeteer.launch({
             executablePath: await chromium.executablePath(),
             args: chromium.args,
