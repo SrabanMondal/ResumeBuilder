@@ -134,7 +134,7 @@ export default function ResumeBuilder() {
             `$1src="${imageUrl}"`
           );
           const res = await axios.post(
-            'https://customresumebackend-production.up.railway.app//api/v1/user/pdf',
+            'https://customresumebackend-production.up.railway.app/api/v1/user/pdf',
             { data: newHTML },
             { responseType: 'blob' }
           );
