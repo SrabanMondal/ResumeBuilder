@@ -1,63 +1,40 @@
 "use client";
 
 import React, { useState } from "react";
-// We'll keep useRouter, but we won't call it immediately
 import { useRouter } from "next/navigation"; 
 
-// This is your existing premium UI component
-// import { BackgroundBeams } from "@/components/ui/background-beams";
 
-// Define the Template type
 type Template = {
   id: number;
   name: string;
-  image: string; // This should be the path to your image, e.g., /resume1.jpg
+  image: string;
 };
 
-// --- TEMPLATE DATA ---
-// Using your original data.
+
 const templates: Template[] = [
   { id: 1, name: "Single Layout", image: "/resume1.jpg" },
   { id: 2, name: "Dual Layout", image: "/resume2.jpg" },
   { id: 3, name: "Triple Layout", image: "/resume3.jpg" },
-  // Let's add more to show how the grid handles it
-//   { id: 4, name: "Modern Chrono", image: "https://placehold.co/400x560/1a1a2e/ffffff?text=Modern+Chrono" },
-//   { id: 5, name: "Academic", image: "https://placehold.co/400x560/2a2a3e/ffffff?text=Academic" },
-//   { id: 6, name: "Creative", image: "https://placehold.co/400x560/3a3a4e/ffffff?text=Creative" },
    ];
 
-// --- MAIN COMPONENT ---
 export default function TemplateSelector() {
   const router = useRouter();
   
-  // This state is now crucial. We select FIRST, then navigate.
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
-  /**
-   * This function ONLY sets the state. It doesn't navigate.
-   */
   const handleTemplateSelect = (template: Template) => {
     setSelectedTemplate(template);
   };
 
-  /**
-   * This function handles the final navigation.
-   * It's called by the "Continue" button.
-   */
   const handleContinue = () => {
     if (!selectedTemplate) return; // Guard clause
 
-    // Navigate to the resume builder page with the selected template name
     router.push(`/resume/${selectedTemplate.name.split(' ')[0]}`); 
     console.log(`Navigating to /resume/${selectedTemplate.name.split(' ')[0]}`); // Placeholder
   };
 
   return (
     <div className="relative flex flex-col items-center w-full min-h-screen overflow-hidden bg-gray-950 text-gray-100 p-4 md:p-8">
-      {/* BackgroundBeams is now a subtle, full-screen effect */}
-      {/* <BackgroundBeams className="absolute inset-0 z-0 opacity-30" /> */}
-      
-      {/* All content is on a higher z-index to be above the beams */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         
         {/* --- HEADER --- */}
@@ -112,8 +89,6 @@ export default function TemplateSelector() {
 }
 
 
-// --- Template Card Component ---
-// Breaking the card into its own component makes the code much cleaner.
 type TemplateCardProps = {
   template: Template;
   isSelected: boolean;

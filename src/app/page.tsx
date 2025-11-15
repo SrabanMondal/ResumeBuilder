@@ -1,10 +1,8 @@
-"use client"; // Required for React hooks (useState, useEffect, useRouter)
+"use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation'; // As you had in your original code
+import { useRouter } from 'next/navigation';
 
-// --- SVG Icons ---
-// Using inline components for icons is clean and fast.
 
 const FileIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -57,21 +55,6 @@ const Header = ({ onCtaClick }: { onCtaClick: (e: React.MouseEvent<HTMLAnchorEle
 
 const Hero = ({ onCtaClick }: { onCtaClick: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => (
     <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
-        {/* NOTE: Add 'float' animation to your tailwind.config.js */}
-        {/* theme: {
-            extend: {
-                keyframes: {
-                    float: {
-                        '0%, 100%': { transform: 'translateY(0)' },
-                        '50%': { transform: 'translateY(-10px)' },
-                    },
-                },
-                animation: {
-                    float: 'float 6s ease-in-out infinite',
-                }
-            }
-        }
-        */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-950 to-gray-950 opacity-50"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full bg-gradient-to-tr from-blue-600/20 to-purple-600/20 blur-3xl opacity-40"></div>
         
@@ -123,8 +106,6 @@ const Hero = ({ onCtaClick }: { onCtaClick: (e: React.MouseEvent<HTMLAnchorEleme
     </section>
 );
 
-// --- Custom Hook for fade-in ---
-// This hook encapsulates the IntersectionObserver logic
 const useFadeIn = (ref: React.RefObject<HTMLElement>) => {
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -152,7 +133,6 @@ const useFadeIn = (ref: React.RefObject<HTMLElement>) => {
     }, [ref]);
 };
 
-// A component to apply the fade-in effect
 const FadeInCard = ({ children }: { children: React.ReactNode }) => {
     const ref = useRef(null);
     useFadeIn(ref);
@@ -219,18 +199,6 @@ const DownloadIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 
-// --- Page Components ---
-
-// ... (Header, Hero components remain the same) ...
-
-// --- Custom Hook for fade-in ---
-// ... (useFadeIn hook remains the same) ...
-
-// ... (FadeInCard component remains the same) ...
-
-// ... (Features component remains the same) ...
-
-// [NEW] This is the replacement for the Testimonial component
 const HowItWorks = () => (
     <section className="py-20 sm:py-28 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
